@@ -6,6 +6,7 @@ use App\Http\Requests\EditUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
@@ -84,6 +85,8 @@ class EditController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auth::logout();
+        User::find($id)->delete();
+        return redirect('/');
     }
 }

@@ -76,5 +76,60 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script>
+
+        $.validator.addMethod("hasUppercase", function(value, element) {
+            if (this.optional(element)) {
+                return true;
+            }
+            return /[A-Z]/.test(value);
+        }, "Must contain uppercase");
+
+        $.validator.addMethod("hasLowercase", function(value, element) {
+            if (this.optional(element)) {
+                return true;
+            }
+            return /[a-z]/.test(value);
+        }, "Must contain lowercase");
+
+        $.validator.addMethod("hasNumber", function(value, element) {
+            if (this.optional(element)) {
+                return true;
+            }
+            return /[0-9]/.test(value);
+        }, "Must contain number");
+
+        var formHorizontal = $('.form-horizontal').validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 6,
+                    hasUppercase: true,
+                    hasLowercase: true,
+                    hasNumber: true,
+                },
+                repeatPassword: {
+                    required: true,
+                    minlength: 6,
+                    hasUppercase: true,
+                    hasLowercase: true,
+                    hasNumber: true,
+                    equalTo: '#newPassword',
+                }
+            }
+        });
+
+        $('#submitButton').on('click', function(e){
+            e.preventDefault()
+            if(formHorizontal.valid()){
+                $('.form-horizontal').submit()
+            }
+        })
+    </script>
 </body>
 </html>

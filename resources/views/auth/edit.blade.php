@@ -16,7 +16,7 @@
                                 <label for="name" class="col-md-4 control-label">Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name')??auth()->user()->name }}" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name')??auth()->user()->name }}" autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -30,7 +30,7 @@
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email')??auth()->user()->email }}" required>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email')??auth()->user()->email }}" >
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -44,7 +44,7 @@
                                 <label for="password" class="col-md-4 control-label">New Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="newPassword" type="password" class="form-control" name="password" required>
+                                    <input id="newPassword" type="password" class="form-control" name="password" >
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -58,7 +58,7 @@
                                 <label for="password" class="col-md-4 control-label">Repeat Password</label>
 
                                 <div class="col-md-6">
-                                    <input name="repeatPassword" id="repeatPassword" type="password" class="form-control"  required>
+                                    <input name="repeatPassword" id="repeatPassword" type="password" class="form-control" >
 
                                     @if ($errors->has('repeatPassword'))
                                         <span class="help-block">
@@ -71,7 +71,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="submitButton" type="button" class="btn btn-primary">
                                         Register
                                     </button>
                                 </div>

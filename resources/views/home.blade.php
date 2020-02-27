@@ -27,7 +27,16 @@
                     <tr>
                         <td>{{auth()->user()->name}}</td>
                         <td>{{auth()->user()->email}}</td>
-                        <td><a href="{{url('edit')}}">Edit</a></td>
+                        <td>
+                            <div class="row">
+                                <button  class="btn col-md-6" ><a href="{{url('edit')}}">Edit</a></button>
+                                <form method="POST" class="col-md-6" action="{{route('edit.destroy', auth()->user()->id)}}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    {{ csrf_field() }}
+                                    <button class="btn col-12" type="submit" >SignOut</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
 
                     </tbody>
