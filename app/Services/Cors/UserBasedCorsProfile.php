@@ -8,6 +8,6 @@ class UserBasedCorsProfile extends DefaultProfile
 {
     public function allowOrigins(): array
     {
-    return Auth::user()->allowed_domains;
+        return Auth::user()->allowed_domains;
     }
 }
