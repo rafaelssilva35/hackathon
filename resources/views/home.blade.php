@@ -29,11 +29,11 @@
                         <td>{{auth()->user()->email}}</td>
                         <td>
                             <div class="row">
-                                <button  class="btn col-md-6" ><a href="{{url('edit')}}">Edit</a></button>
+                                <a href="{{url('edit')}}"><button  class="btn col-md-6" >Edit</button></a>
                                 <form method="POST" class="col-md-6" action="{{route('edit.destroy', auth()->user()->id)}}">
                                     <input type="hidden" name="_method" value="DELETE">
                                     {{ csrf_field() }}
-                                    <button class="btn col-12" type="submit" >SignOut</button>
+                                    <button class="btn-danger btn col-12" type="submit" >SignOut</button>
                                 </form>
                             </div>
                         </td>
